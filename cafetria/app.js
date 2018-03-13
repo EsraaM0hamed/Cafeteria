@@ -1,12 +1,33 @@
+import { Schema } from 'mongoose';
+
+//import { Server } from 'net';
+
 var express = require('express');
 var path = require('path');
+
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+
+var mongoose=require('mongoose');
+mongoose.connect( 'mongodb://localhost:27017/cafetria_db');
+//create schema for products:
+var schema=new Schema({
+ _id:Number,
+ p_name:String,
+ p_price:Number,
+ p_category:Number,
+ p_img:Text
+
+});
+
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var products = require('./routes/product');
+
+
 
 var app = express();
 
@@ -22,8 +43,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use('/', index);
+
 app.use('/users', users);
+app.use('/products', products);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
