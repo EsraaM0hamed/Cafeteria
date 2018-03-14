@@ -2,19 +2,7 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-/*allusers && myorders*/
-nav ul{
-	 list-style-type: none;
-}
-nav ul#menu li{
-	display: inline-block;
-	padding: 3px;
-	border-right: 3px solid black;
-}
-nav ul#menu li:last-child{
-	border-right: none;
-}
-table tr td a ,table tr td a:hover{
-  text-decoration: none;
-  color: #fff;
+
+a {
+  color: #00B7FF;
 }
