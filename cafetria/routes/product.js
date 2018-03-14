@@ -19,12 +19,12 @@ resp.render('product/add_product');
 });
 
 
-
+var productModel=mongoose.model('products');
 
 router.post('/add_product',uploadMid.single('avatar'),function(req,resp){
    console.log("ssss");
     //fs.renameSync(req.file.path,req.file.destination+"/"+req.file.originalname);
-   var productModel=mongoose.model('products');
+   
    var product=new  productModel({
        p_name:req.body.product_name,
        p_price:req.body.product_price,
