@@ -31,7 +31,7 @@ var selectedProducts =[];
    });
 
    $("#submit-order").click(function(event){
-      alert("submite !?");
+      alert("submite ");
       //event.preventDefault();
       //send request;
 
