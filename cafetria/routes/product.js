@@ -1,8 +1,16 @@
 var express=require('express');
-var model=require('./models');
+var fs=require('fs');
 var router =express.Router();
 var bodyParser=require('body-parser');
 var bodyParserMid=bodyParser.urlencoded();
+var multer=require('multer');
+
+
+var mongoose=require('mongoose');
+var uploadMid=multer({
+    dest:"./public/imgs"
+});
+
 
 router.get('/add_product',function(req,resp){
 resp.render('product/add_product');
@@ -10,20 +18,41 @@ resp.render('product/add_product');
 
 });
 
+
+
+
+router.post('/add_product',uploadMid.single('avatar'),function(req,resp){
+   console.log("ssss");
+    //fs.renameSync(req.file.path,req.file.destination+"/"+req.file.originalname);
+   var productModel=mongoose.model('products');
+   var product=new  productModel({
+       p_name:req.body.product_name,
+       p_price:req.body.product_price,
+       p_image:req.body.product_img,
+       p_category:req.body.product_category
+   });
+   
+     product.save(function(err,doc){
+
+    console.log(err , doc);
+    resp.json(doc);
+   });
+
+    
+})
 router.get('/products',function(req,resp){
-    resp.render('product/products');
+   
 
+productModel.find({},function(err,result){
+    if(!err){
+        resp.render('product/products',{data:result});
 
-});
+    }else{
+        resp.json(err);
+    }
 
-router.post('/add_product',bodyParserMid,function(req,resp){
-    var Bee = new Models.Product({ //You're entering a new bug here, giving it a name, and specifying it's type.
-       p_name: "Scruffy",
-    bugColour: "Orange",
-        Genus: "Bombus"
-     });
-
-
+})
+     
 });
 
 router.post('/products',bodyParserMid,function(req,resp){

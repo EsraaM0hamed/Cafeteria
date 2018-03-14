@@ -14,6 +14,24 @@
 </head>
 <body>
     <h1>Products ...</h1>
-    <table ></table>
+    <div class="table-responsive">
+        <tr>
+            
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Category</th>
+            </tr>
+         <% data.forEach(function(product){ %>
+            
+               <tr>
+                   <td><%= product.p_name %></td>
+                   <td><%= product.p_price %></td>
+                   <td><%= product.p_category %></td>
+                   <td><%= product.p_img %></td>
+               </tr>
+        <% })%>
+        </table>
+    </div>
 </body>
 </html>
