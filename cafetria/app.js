@@ -10,7 +10,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var app = express();
 
-
+app.use(express.static('public'));
 var mongoose=require('mongoose');
 mongoose.connect("mongodb://localhost:27017/cafetria_db");
 require('./models/products');
