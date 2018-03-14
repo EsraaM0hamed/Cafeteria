@@ -21,15 +21,14 @@ resp.render('product/add_product');
 
 var productModel=mongoose.model('products');
 
-router.post('/add_product',uploadMid.single('avatar'),function(req,resp){
-   console.log("ssss");
-    //fs.renameSync(req.file.path,req.file.destination+"/"+req.file.originalname);
+router.post('/add_product',uploadMid.single('product_img'),function(req,resp){
+//fs.renameSync(req.file.path,req.file.destination+"/"+req.file.originalname);
    
    var product=new  productModel({
        p_name:req.body.product_name,
        p_price:req.body.product_price,
-       p_image:req.body.product_img,
-       p_category:req.body.product_category
+       p_category:req.body.product_category,
+       p_img:req.file.filename,
    });
    
      product.save(function(err,doc){

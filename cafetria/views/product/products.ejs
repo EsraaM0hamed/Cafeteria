@@ -14,6 +14,7 @@
 </head>
 <body>
     <h1>Products ...</h1>
+    <from>
     <table class="table-responsive" border="2">
         <tr>
             
@@ -29,10 +30,17 @@
                    <td><%= product.p_name %></td>
                    <td><%= product.p_price %></td>
                    <td><%= product.p_category %></td>
-                   <td><%= product.p_img %></td>
+                   <td><img width="100" height="100" src="/imgs/<%=product.p_img%>"/></td>
+                   <td>
+                       <a href="edit"></a>
+                       <a href="delete"></a>
+                
+                </td>
+                 
                </tr>
         <% })%>
         </table>
+        </from>
     </div>
 </body>
 </html>

@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-
+app.use(express.static('public'));
 var mongoose=require('mongoose');
 mongoose.connect("mongodb://localhost:27017/cafetria_db");
 console.log(mongoose);

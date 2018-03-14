@@ -6,7 +6,7 @@ var products=new Schema({
     p_name:String,
     p_price:Number,
     p_category:String,
-    p_img:{ data: Buffer, contentType: String}
+    p_img:String
    
    });
   products.plugin(mongoosePaginate);
