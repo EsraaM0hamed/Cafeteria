@@ -2,23 +2,23 @@
 <html>
   <head>
     <title>Add User</title>
-    <link rel='stylesheet' href='style.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     
     <h1> Add User</h1>
-    <form method="post" action="#" enctype="multipart/form-data">
+    <form method="post" action="/users/add" enctype="multipart/form-data">
     
     <div id="mydiv" > 
   
 
     Name   <input   id="aa" type ="text" name="name"  ><br/>
     Email  <input  id="bb"  type="email" name="email" autocomplete="off"   ><br>
-    Password  <input  id="cc" type="password" name="password" ></br>
-    Confirm Password  <input   id="dd"  type="password" name="password" ></br>
+    Password  <input  id="cc" type="password" name="passw" ></br>
+    Confirm Password  <input   id="dd"  type="password" name="cpassw" ></br>
     Room No <input  id="ee" type="text"  name="roomno" ></br>
     Ext <input   id="ff"  type="text" name="ext" ></br>
-    profile picture            <input type="file" name="pic" accept="image/*"> </br> </br>
+    profile picture            <input type="file" name="img" accept="image/*"> </br> </br>
 
     <input  id="hh" type="submit" value="save" >
      <input  id="kk" type="reset" value="Reset" >
