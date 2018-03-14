@@ -14,4 +14,4 @@ var orders=new Schema({
 	order_ext:Number
 });
 //register model
- mongoose.model("orders",orders);
+ mongoose.model('orders',orders);

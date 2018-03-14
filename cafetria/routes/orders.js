@@ -6,7 +6,7 @@ var bodyParserMid=bodyParser.urlencoded();
 var multer=require('multer');
 var mongoose=require('mongoose');
 
-//var OrdersModel=mongoose.model('orders');
+var OrdersModel=mongoose.model('orders');
 /* GET orders listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
