@@ -16,14 +16,8 @@ var orderModel=mongoose.model('orders');
 
 
 router.get('/orders',function(req,resp){
-usersModel.find({},function(err,result){
+orderModel.find({},function(err,result){
 console.log(result);
 resp.render('/orders',{data:result,msg:req.flash('msg')});//render
  });//find
    });//get
-
-
-
-
-
-
