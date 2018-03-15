@@ -16,11 +16,11 @@ var orderModel=mongoose.model('orders');
 
 
 router.get('/checks',function(req,resp){
-usersModel.find({},function(err,result){
-console.log(result);
-resp.render('/checks',{data:result,msg:req.flash('msg')});//render
- });//find
-   });//get
+      usersModel.find({},function(err,result){
+      console.log(result);
+      resp.render('/checks',{data:result,msg:req.flash('msg')});//render
+       });//find
+});//get
 
 
 
@@ -28,11 +28,10 @@ router.post('/checks',bodyParserMid ,function(req,resp){
 
     var x=req.body.x;
     var y=req.body.y;
-ordersModel.find({order_date,order_amount,order_date:{$gte:x,$lt:y} },function(err,result){       
+ordersModel.find({order_date,order_amount,order_date:{$gte:x,$lt:y} },function(err,result){
 resp.json({result});
 
   });
 
 });
-
-
+module.exports = router;

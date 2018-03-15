@@ -16,9 +16,8 @@ var flash=require('connect-flash');
 mongoose.connect("mongodb://localhost:27017/cafetria_db");
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
 app.use(express.static('public'));
-app.use(flash());
+//app.use(flash());
 
 
 require('./models/products');
@@ -36,7 +35,6 @@ var orders=require('./routes/orders');
 
 
 app.use(flash());
-mongoose.connect("mongodb://localhost:27017/cafetria_db");
 
 app.use(session({
       secret:"@#%#$^$%",
@@ -60,8 +58,8 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/products', products);
 app.use('/auth',auth);
-app.use('checks',checks);
-app.use('orders',orders);
+app.use('/checks',checks);
+//app.use('/orders',orders);
 
 
 // catch 404 and forward to error handler
@@ -82,7 +80,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(8080,function(){
-  console.log("yalla ......")
-})
 module.exports = app;

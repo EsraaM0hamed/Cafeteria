@@ -6,14 +6,14 @@ var fs=require('fs');
 var multer=require('multer');
 var mongoose=require('mongoose');
 var uploadMid=multer({
-    dest:"./public/img" 
+    dest:"./public/img"
   });
   var userModel=mongoose.model('users');
 router.get('/add',function(req,resp){
-	
+
 	console.log("hopa ");
    resp.render("add");
-	
+
 });
 router.post('/add',uploadMid.single('img'),function(req,resp){
     //photo rania
@@ -33,7 +33,7 @@ router.post('/add',uploadMid.single('img'),function(req,resp){
 
 
 
-        
+
     });
     user.save(function(err,doc){
         console.log(doc);
@@ -43,22 +43,22 @@ router.post('/add',uploadMid.single('img'),function(req,resp){
             resp.json(err);
         }
     });
-    
+
 });
 
 
 router.get('/list',function(req,resp){
-    var usersModel=mongoose.model('users'); 
+    var usersModel=mongoose.model('users');
     usersModel.find({},function(err,result){
         if(!err){
             resp.render('list',{data:result});
-    
+
         }else{
             resp.json(err);
         }
-    
+
     })
-      
+
 });
 
 
@@ -71,31 +71,31 @@ router.get('/list/:page?',function(req,resp){
     var page=1;
     if(req.params.page)
     page=req.params.page
-    
-    
+
+
 });
 
 router.get('/login',function(req,resp){
     resp.render('login');
     }) ;
-  
-  
-  
+
+
+
   router.post('/login',bodyParserMid,function(req,resp){
     var email=req.body.email;
     var password=req.body.passw;
     if(email =="n@n.com" && passw=="123"){
       req.session.email="n@n.com";
       req.session.password="123";
-  
+
       resp.redirect('/users/list/');
       console.log( req.session.username);
     }else{
       req.flash("msg",'invalide username');
       resp.redirect('/login');
     }
-  
-  });  
+
+  });
 
 
 

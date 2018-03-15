@@ -1,33 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-2.1.1.min.js" />
 
-	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.js" />
-    <title>Add Product</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-    
-</head>
-
-<body>
+<%include header.ejs %>
+<div id="main">
+    <link rel="stylesheet" href="/css/product.css">
     <form action="/products/add_product" method="POST" enctype="multipart/form-data">
-    <h1>Add Product ...</h1><br/>
-    Product: <input type="text" name="product_name"/><br/>
-    Price: <input type="text" name="product_price"/><br/>
+    <h3>Add Product ...</h3><br/>
+    <div style="text-align: center;">
+   <h3> Product:
+        <input type="text" name="product_name" id="btn"/><br/>
+    Price:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="product_price" id="btn"/><br/>
     
-    Category:<select type="context" name="product_category">
+    Category:&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<select type="context" name="product_category" id="btn">
         <option value="hot">Hot Drink</option>
         <option value="soft">Soft Drink</option>
        
     </select><br/>
-    Product Picture: <input type="file" name="product_img" value=""/><br/>
-    <input type="submit" value="save" />
-    <input type="reset" value="Reset" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product Picture: <input type="file" name="product_img" value=""/><br/>
+    </div>
+    <input type="submit" value="save" id="btn"/>
+    <input type="reset" value="Reset" id="btn"/>
+</h3>
 </form>
-
-</body>
-</html>
+</div>
+<%include fotter.ejs %>
