@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
   contex = {
     products:products,
     rooms:rooms,
-    admin:true,
+    admin:false,
     user:{name:"abdelmun3m"}
   }
   //res.render('makeOrder',{products:products,rooms:rooms});
