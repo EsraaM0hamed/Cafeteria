@@ -1,0 +1,138 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+.header{
+
+  padding: 10px;
+  border: 1px solid black;
+
+
+}
+.toplist{
+  padding-left: 10px;
+}
+
+.list-item{
+
+  padding: 5px;
+  font-size: 20px;
+}
+.list-item-seperator{
+
+
+    padding: 5px;
+    font-size: 20px;
+  border-right: 1px solid black;
+
+}
+.center{
+  text-align: center;
+}
+.myblock{
+  border: 1px solid black;
+}
+#selected-products{
+
+}
+#Products-list{
+}
+
+hr{
+      display: block;
+      width: 95%;
+      border-style: inset;
+      border-width: 2px;
+}
+
+
+.product{
+
+  width: 80px;
+  height: 150px;
+  border: 1px solid black;
+  margin: 10px;
+  margin-right: 0px;
+  display: inline-block;
+  padding: 0px;
+
+}
+.product img{
+
+  display: block;
+  width: 100%;
+  height:60%;
+}
+
+.product p{
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+.product small{
+  display: none;
+}
+
+#order-items{
+  margin-bottom: 10px;
+}
+.order-item{
+  margin-top: 5px;
+}
+.order-item input{
+  width: 25%;
+}
+.order-item p{
+  display: inline-block;
+  width: 25%;
+  font-size: 15px;
+}
+#order-form textarea{
+
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
+#order-form select{
+  width: 100%;
+}
+.user-info{
+  display: block;
+  width:200px;
+  margin: 40px auto;
+}
+.user-info img{
+
+  border-radius: 50%;
+  width: 100%;
+
+}
+.user-info #user-name{
+  font-size: 20px;
+  color: black;
+}
+.search-row{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.search-input{
+  width: 30%;
+  height: 40px;
+}
+.myOrders-list{
+  display: inline-block;
+  width: 20%;
+  border: 1px solid black;
+  height: 350px;
+  float:left;
+  margin-left: 20px;
+}
+.left-block{
+  display: inline-block;
+  width: 73%;
+  border: 1px solid black;
+  height: 350px;
+  float: left;
+  margin-left:50px;
+
+}

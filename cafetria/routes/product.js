@@ -13,12 +13,42 @@ var uploadMid=multer({
 
 
 router.get('/add_product',function(req,resp){
-resp.render('product/add_product');
+resp.render('product/add_product',{admin:true,user:{name:"esraa"}});
 
 
 });
 
 
+
+router.get('/delete/:id',function(req,resp){
+    mongoose.model('[products]').remove({_id:req.params.id},function(err,result){
+        if(!err){
+            req.flash("msg","Done")
+            resp.redirect('/products/products');
+
+
+        }
+    })
+})
+
+
+
+router.get('/edit/:id',function(req,resp){
+    mongoose.model('products').findOne({_id:req.params.id},function (err,doc) {
+        resp.render('product/edit',{obj:doc});
+
+    })
+})
+router.post('/edit/:id',[bodyParserMid],function(req,resp){
+    console.log(req.params.id);
+    mongoose.model('products').update({_id:parseInt(req.params.id)},{
+
+    "$set":{title:req.body.title}
+    },function(err,doc){
+        
+        resp.redirect('/products/products');
+    });
+})
 var productModel=mongoose.model('products');
 
 router.post('/add_product',uploadMid.single('product_img'),function(req,resp){
@@ -36,6 +66,7 @@ router.post('/add_product',uploadMid.single('product_img'),function(req,resp){
              console.log("error");
             //resp.render('product/products',{data:});
            // resp.end();
+           console.log("added");
             resp.redirect('/products/products');
 
          }else{
@@ -51,43 +82,15 @@ router.post('/add_product',uploadMid.single('product_img'),function(req,resp){
     
 })
 
-router.get('/delete/:id',function(req,resp){
-    mongoose.model('[products]').remove({_id:req.params.id},function(err,result){
-        if(!err){
-            req.flash("msg","Done")
-            resp.redirect('/product/products');
-
-
-        }
-    })
-})
-
-
-
-
-router.get('/edit/:id',function(req,resp){
-    mongoose.model('products').findOne({_id:req.params.id},function (err,result) {
-        resp.render('product/edit',{obj:result});
-
-    })
-})
-router.post('/edit/:id',[bodyParserMid],function(req,resp){
-    console.log(req.params.id);
-    mongoose.model('products').update({_id:parseInt(req.params.id)},{
-
-    "$set":{title:req.body.title}
-    },function(err,doc){
-        
-        resp.redirect('/products/products');
-    });
-})
 router.get('/products',function(req,resp){
-   
+
+    //resp.render('product/products',{admin:true,user:{name:"esraa"}});
+
 
 productModel.paginate({},{page:1,limit:40},function(err,result){
 
     if(!err){
-        resp.render('product/products',{data:result.docs});
+        resp.render('product/products',{data:result.docs,admin:true,user:{name:"esraa"}});
 
     }else{
         resp.json(err);
@@ -98,6 +101,7 @@ productModel.paginate({},{page:1,limit:40},function(err,result){
 });
 
 router.post('/products',bodyParserMid,function(req,resp){
+    
     
 
 });
