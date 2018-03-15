@@ -21,6 +21,3 @@ router.post('/login',bodyParserMid,function(req,resp){
 });
 
 module.exports=router;
-
-
-

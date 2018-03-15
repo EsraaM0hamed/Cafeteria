@@ -38,7 +38,6 @@ router.get('/', function(req, res, next) {
   res.render('index',contex);
 
 });
-
 router.post("/sendOrder",function(req,res,next){
   var order=new ordersModel({
         order_status:"done",
