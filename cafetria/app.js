@@ -1,34 +1,44 @@
-// import { Schema } from 'mongoose';
-
-// import { Server } from 'net';
 
 var express = require('express');
-
 var path = require('path');
 var flash =require('connect-flash');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var app = express();
-
-app.use(express.static('public'));
 var mongoose=require('mongoose');
-mongoose.connect("mongodb://localhost:27017/cafetria_db");
-require('./models/products');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-app.use(flash()); 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var session=require('express-session');
+var flash=require('connect-flash');
+
+
+mongoose.connect("mongodb://localhost:27017/cafetria_db");
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+app.use(express.static('public'));
+app.use(flash());
+
+
+require('./models/products');
+require('./models/users');
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var products = require('./routes/product');
+var users = require('./routes/users');
+var auth=require('./routes/auth');
 
 
+app.use(flash());
+mongoose.connect("mongodb://localhost:27017/cafetria_db");
 
-
-
+app.use(session({
+      secret:"@#%#$^$%",
+      cookie:{maxAge:1000*60*60*24}
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -44,9 +54,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', index);
-
 app.use('/users', users);
 app.use('/products', products);
+app.use('/auth',auth);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
