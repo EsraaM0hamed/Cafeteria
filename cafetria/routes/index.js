@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
-
+var bodyParser=require('body-parser');
+var bodyParserMid=bodyParser.urlencoded();
+var fs=require('fs');
+var multer=require('multer');
+var mongoose=require('mongoose');
+var uploadMid=multer({
+    dest:"./public/img" 
+  });
+var ordersModel=mongoose.model('orders');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Express' });
@@ -32,8 +40,29 @@ router.get('/', function(req, res, next) {
 });
 
 router.post("/sendOrder",function(req,res,next){
+  var order=new ordersModel({
+        order_status:"done",
+        order_amount:"1",
+        order_action:"processing",
+        user_name:"name",
+        order_room:req.room,
+        order_ext:"1",
 
-
+        /*
+          order_status:String,
+          order_amount:String,
+          order_action:String,
+          user_name:String,
+          order_room:Number,
+          order_ext:Number
+        */
+    });
+    if(order){
+      console.log("order added");
+    }else{
+      console.log("order not added");
+    }
+    
   res.redirect('/');
 });
 

@@ -1,3 +1,4 @@
+
 // import { Schema } from 'mongoose';
 
 // import { Server } from 'net';
@@ -11,19 +12,26 @@ var logger = require('morgan');
 var app = express();
 
 app.use(express.static('public'));
+
 var mongoose=require('mongoose');
 mongoose.connect("mongodb://localhost:27017/cafetria_db");
-require('./models/products');
 var db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(flash()); 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 
+require('./models/users');
+require('./models/products');
+require('./models/orders');
+
+var auth=require('./routes/auth');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var session=require('express-session');
 var products = require('./routes/product');
+var orders = require('./routes/orders');
 
 
 
@@ -42,19 +50,21 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
+app.use(session({
+secret:"@#%#$^$%",
+cookie:{maxAge:1000*60*60*24}
+}));
 app.use('/', index);
-
 app.use('/users', users);
 app.use('/products', products);
-
+app.use('/orders', orders);
+app.use('/auth',auth);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -66,5 +76,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
+app.listen(8080,function(){
+  console.log("yalla ......")
+})
 module.exports = app;
