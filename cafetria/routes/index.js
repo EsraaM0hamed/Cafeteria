@@ -20,8 +20,14 @@ router.get('/', function(req, res, next) {
     {id:13,name:"pepesi",img:"pepsi.jpeg",price:10},
   ];
   var rooms=[1,2,3,4,5,6];
+  contex = {
+    products:products,
+    rooms:rooms,
+    admin:true,
+    user:{name:"abdelmun3m"}
+  }
   //res.render('makeOrder',{products:products,rooms:rooms});
-  res.render('index',{products:products,rooms:rooms});
+  res.render('index',contex);
 
 });
 
