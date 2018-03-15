@@ -1,0 +1,31 @@
+<html>
+  <title>Orders</title>
+
+  <head>
+
+  </head>
+
+<h1>Orders</h1>
+    <br>
+
+<br>
+<table>
+<tr>
+    <%data.forEach(function(orders){%>
+        
+        <td><%= orders.order_date%></td>    
+        <td><%= orders.user_name%></td>
+        <td><%= orders.order_room%></td>
+        <td><%= orders.order_ext%></td>
+        <td><%= orders.order_action%></td>
+        
+        
+        <% }) %>
+      
+    </tr>
+
+</table>
+
+
+</body>
+            </html>
