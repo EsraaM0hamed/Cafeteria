@@ -12,24 +12,8 @@ var users=new Schema({
    ext:Number,
    img:String,
 
-/*
-  _id:Number,
-  name:String,
-  dob:{
-    type:Date,
-    default:Date.now
-  }
-*/
+
 });
 
-//users.plugin(mongoosePaginate);
-/*
 
-users.post('remove',function(doc){
-var user_id=doc._id;
-  mongoose.model("posts").remove({user:user_id},function(err,result){
-    
-  });
-*/
-//register model 
 mongoose.model("users",users);

@@ -25,6 +25,7 @@ router.post('/add',uploadMid.single('img'),function(req,resp){
 
         name:req.body.name,
         email:req.body.email,
+        passw:req.body.passw,
         ext:req.body.ext,
         roomno:req.body.roomno,
         img:req.file.originalname,
@@ -46,16 +47,6 @@ router.post('/add',uploadMid.single('img'),function(req,resp){
 });
 
 
-
-
-/*
-router.get('/list',function(req,resp){
-	
-	console.log("hopa ");
-   resp.render("list");
-	
-});
-*/
 router.get('/list',function(req,resp){
     var usersModel=mongoose.model('users'); 
     usersModel.find({},function(err,result){
@@ -80,31 +71,33 @@ router.get('/list/:page?',function(req,resp){
     var page=1;
     if(req.params.page)
     page=req.params.page
-    /*
-    mongoose.model('users').paginate({},{page:page,limit:5},function(err,result)
-    {
-        if(!err){
-         resp.render('users/list',{data:result,msg:req.flash('msg')});
-        //resp.json(result.docs);
-        }
-        else{
-           resp.render(err);
-        }
-
-    });*/
+    
     
 });
 
+router.get('/login',function(req,resp){
+    resp.render('login');
+    }) ;
+  
+  
+  
+  router.post('/login',bodyParserMid,function(req,resp){
+    var email=req.body.email;
+    var password=req.body.passw;
+    if(email =="n@n.com" && passw=="123"){
+      req.session.email="n@n.com";
+      req.session.password="123";
+  
+      resp.redirect('/users/list/');
+      console.log( req.session.username);
+    }else{
+      req.flash("msg",'invalide username');
+      resp.redirect('/login');
+    }
+  
+  });  
 
 
-
-
-/*
-//GET users listing. 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-*/
 
 
 

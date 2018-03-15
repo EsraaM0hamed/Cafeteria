@@ -5,13 +5,23 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
 var app = express();
 var mongoose=require('mongoose');
 require('./models/users');
+var auth=require('./routes/auth');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var session=require('express-session');
+var flash=require('connect-flash');
+app.use(flash());
 mongoose.connect("mongodb://localhost:27017/cafetria_db");
+app.use(session({
+secret:"@#%#$^$%",
+cookie:{maxAge:1000*60*60*24}
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -26,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-
+app.use('/auth',auth);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
