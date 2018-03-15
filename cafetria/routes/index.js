@@ -28,12 +28,9 @@ router.get('/', function(req, res, next) {
   }
   //res.render('makeOrder',{products:products,rooms:rooms});
   res.render('index',contex);
-
 });
 
 router.post("/sendOrder",function(req,res,next){
-
-
   res.redirect('/');
 });
 
