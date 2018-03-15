@@ -78,13 +78,13 @@ router.post('/edit/:id',[bodyParserMid],function(req,resp){
     "$set":{title:req.body.title}
     },function(err,doc){
         
-        resp.redirect('/product/products');
+        resp.redirect('/products/products');
     });
 })
 router.get('/products',function(req,resp){
    
 
-productModel.paginate({},{page:1,limit:25},function(err,result){
+productModel.paginate({},{page:1,limit:40},function(err,result){
 
     if(!err){
         resp.render('product/products',{data:result.docs});
