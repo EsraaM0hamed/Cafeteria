@@ -46,8 +46,8 @@ router.post('/login',bodyParserMid,function(req,resp){
                 resp.redirect('/auth/login');
             }
 
-
-
+        });
+    });
 module.exports=router;
 
 
