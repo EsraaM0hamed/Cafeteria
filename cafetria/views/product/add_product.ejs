@@ -1,0 +1,26 @@
+
+<%include header.ejs %>
+<div id="main">
+    <link rel="stylesheet" href="/css/product.css">
+    <form action="/products/add_product" method="POST" enctype="multipart/form-data">
+    <h3>Add Product ...</h3><br/>
+    <div style="text-align: center;">
+   <h3> Product:
+        <input type="text" name="product_name" id="btn"/><br/>
+    Price:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="product_price" id="btn"/><br/>
+    
+    Category:&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<select type="context" name="product_category" id="btn">
+        <option value="hot">Hot Drink</option>
+        <option value="soft">Soft Drink</option>
+       
+    </select><br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product Picture: <input type="file" name="product_img" value=""/><br/>
+    </div>
+    <input type="submit" value="save" id="btn"/>
+    <input type="reset" value="Reset" id="btn"/>
+</h3>
+</form>
+</div>
+<%include fotter.ejs %>

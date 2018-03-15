@@ -1,0 +1,95 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/bootstrap-3/css/bootstrap.css" >
+  <link rel="stylesheet" href="/stylesheets/makeOrder.css" >
+  <script src="/javascripts/jquery-3.2.1.js"></script>
+  <script src="/javascripts/makeOrder.js"></script>
+</head>
+  <body>
+
+    <!-- Main Section  -->
+    <div class="row header">
+          <div class="col-md-10">
+              <ul class="list-inline toplist" >
+                  <li class=" list-item-seperator"><a href="#">Item 1</a></li>
+                  <li class=" list-item-seperator"><a href="#">Item 2</a></li>
+                  <li class="list-item-seperator"><a href="#">Item 3</a></li>
+                  <li class="list-item-seperator"><a href="#">Item 4</a></li>
+                  <li class="list-item"><a href="#">Item 5</a></li>
+              </ul>
+           </div>
+          <div class="col-md-2">
+            <div class="row">
+              <div class="center-block">
+                <img src="/images/11.jpg" alt="..."
+                class="img-responsive text-center img-circle user-image center-block">
+              </div>
+              <div><p class="center">User name</p></div>
+            </div>
+          </div>
+    </div>
+    <!-- end of header -->
+
+
+      <div class="row">
+          <div class="col-md-10 col-md-offset-1  main-section" >
+
+              <div class="row search-row">
+                  <div class="col-md-4 col-md-offset-8">
+                    <input class ="search-input"  type="search"  placeholder="Search the site..." />
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-4">
+                    <div class="myblock myOrders-list" >
+                      <form id="order-form" method="post" action="/sendOrder">
+                          <div id="order-items">
+                          </div>
+                          <textarea class="form-control" rows="4" placeholder="add any note .."></textarea>
+                          <br/>
+                          <p>Room</p>
+                          <select id="room-list" name="room" class="form-control">
+
+                              <%rooms.forEach(function(room){%>
+                                    <option value="<%=room%>"><%=room%></option>
+                              <%});%>
+                          </select>
+
+                          <hr/>
+                          <p style="text-align:right; padding-right:5px;" id="total-order">0</p>
+                          <div class="center">
+                            <button type="submit" id="submit-order" class="btn btn-default">Order</button>
+                          </div>
+                        </form>
+                    </div>
+                  </div>
+
+                  <div class="col-md-8">
+                    <div class="myblock center">
+                          <div id="selected-products">
+
+                          </div>
+
+                          <hr  />
+                          <div id="Products-list ">
+                            <%  if(products){ %>
+                                <%  products.forEach(function(product){ %>
+                                  <div class="product">
+                                      <img src="/images/<%= product.img%>"/>
+                                      <small><%= product.id%></small>
+                                      <p><%= product.name%></p>
+                                      <p><%= product.price%> </p>
+                                  </div>
+                                <%});%>
+                            <% } %>
+                          </div>
+                    </div>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+  </body>
+</html

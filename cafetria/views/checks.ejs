@@ -1,0 +1,98 @@
+<html>
+  <title>checks</title>
+
+  <head>
+<script>
+
+  $('#search').click(function(){
+
+    var x=document.getElementById("from").value;
+    var y=document.getElementById("to").value;
+
+    $.ajax({
+            method: 'post',
+            async: true,
+            url: '/checks',
+            data: {x,y},
+            success: function(res){
+              $("#order_table").html(res)
+            
+            
+              }
+        })
+  })   
+  
+  </script>
+
+
+  </head>
+
+<h1>Checks</h1>
+    <br>
+    
+
+    <label for="">Date From</label>
+    <input class="search" type="date" id="from" name=" From" >
+    <label for="">Date To</label>
+    <input class="search" type="date" id="to" name="To" >
+    <button id="search">search</button>
+
+<br>
+<br>
+<br>
+
+<select>
+    <%data.forEach(function(users){%>
+        <option value=""><%= users.name%></option>
+
+        <% }) %>
+      
+
+      </select>
+<br>
+<br>
+     <!-- <table style="width:80%" border="1px solid black" border-collapse="collapse" >
+            <tr>
+              <th>Name</th>
+              <th>Total Amount</th> 
+              
+            </tr>
+            <tr>
+              <td>Ali</td>
+              <td>100</td> 
+              
+            </tr>
+            <tr>
+              <td>Yamen</td>
+              <td>600</td> 
+              
+            </tr>
+          </table>  
+        -->
+          
+
+
+          <table id="order_table" style="width:70%" margin-left="100px"  border="1px solid black" border-collapse="collapse" >
+                <tr>
+                  <th>Order Date</th>
+                  <th> Amount</th> 
+                  
+                </tr>
+                <tr>
+                  <td>02-02-2017</td>
+                  <td>100</td> 
+                  
+                </tr>
+                <tr>
+                  <td>21-12-2018</td>
+                  <td>600</td> 
+                  
+                </tr>
+              </table>       
+
+          
+
+
+
+
+            </html>
