@@ -1,11 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
+/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('allusers');
+
 });
-router.get('/allusers', function(req, res, next) {
-  res.render('users/allusers');
+
+router.post("/sendOrder",function(req,res,next){
+
+
+  res.redirect('/');
 });
+
 module.exports = router;
